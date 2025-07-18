@@ -1,0 +1,14 @@
+[
+  {
+    "ParameterKey": "KeyPairName",
+    "ParameterValue": "devops-kp"
+  },
+  {
+    "ParameterKey": "LocalIP",
+    "ParameterValue": "112.210.244.249/32"
+  },
+  {
+    "ParameterKey": "BucketName",
+    "ParameterValue": "artsalva-applications-logs"
+  }
+]
