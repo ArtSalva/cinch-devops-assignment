@@ -1,0 +1,253 @@
+----- CLOUDFORMATION VALIDATION -----
+{
+    "Status": "CREATE_COMPLETE",
+    "Outputs": [
+        {
+            "OutputKey": "AppPrivateIP",
+            "OutputValue": "10.0.1.19",
+            "Description": "App Instance Private IP"
+        },
+        {
+            "OutputKey": "S3BucketName",
+            "OutputValue": "artsalva-applications-logs",
+            "Description": "S3 Bucket Name"
+        },
+        {
+            "OutputKey": "BastionPublicIP",
+            "OutputValue": "50.16.96.152",
+            "Description": "Bastion Public IP"
+        }
+    ]
+}
+\n----- RESOURCES -----
+[
+    {
+        "Type": "AWS::EC2::Instance",
+        "ID": "i-04baeb6dda53bfad0"
+    },
+    {
+        "Type": "AWS::IAM::InstanceProfile",
+        "ID": "devops-assignment-AppInstanceProfile-shFX4Y2ZstUr"
+    },
+    {
+        "Type": "AWS::IAM::Role",
+        "ID": "devops-assignment-AppInstanceRole-hR42tCH0GRrm"
+    },
+    {
+        "Type": "AWS::EC2::SecurityGroup",
+        "ID": "sg-0b7a7f310f8548437"
+    },
+    {
+        "Type": "AWS::EC2::Instance",
+        "ID": "i-0f0e02b01672464a7"
+    },
+    {
+        "Type": "AWS::EC2::SecurityGroup",
+        "ID": "sg-0c2d00a29707faa4d"
+    },
+    {
+        "Type": "AWS::EC2::InternetGateway",
+        "ID": "igw-0dae0b8de666421bc"
+    },
+    {
+        "Type": "AWS::EC2::Instance",
+        "ID": "i-058d23e7972866eac"
+    },
+    {
+        "Type": "AWS::EC2::SecurityGroup",
+        "ID": "sg-053c955d8f2931a54"
+    },
+    {
+        "Type": "AWS::EC2::Route",
+        "ID": "rtb-000471634b4e1a007|0.0.0.0/0"
+    },
+    {
+        "Type": "AWS::EC2::RouteTable",
+        "ID": "rtb-000471634b4e1a007"
+    },
+    {
+        "Type": "AWS::EC2::Subnet",
+        "ID": "subnet-08b03561031971336"
+    },
+    {
+        "Type": "AWS::EC2::SubnetRouteTableAssociation",
+        "ID": "rtbassoc-083075c2a810bedf7"
+    },
+    {
+        "Type": "AWS::EC2::Route",
+        "ID": "rtb-0bcdb8dc8b026855f|0.0.0.0/0"
+    },
+    {
+        "Type": "AWS::EC2::RouteTable",
+        "ID": "rtb-0bcdb8dc8b026855f"
+    },
+    {
+        "Type": "AWS::EC2::Subnet",
+        "ID": "subnet-054f956c4d40ba6e1"
+    },
+    {
+        "Type": "AWS::EC2::SubnetRouteTableAssociation",
+        "ID": "rtbassoc-0406bc115b794713c"
+    },
+    {
+        "Type": "AWS::S3::Bucket",
+        "ID": "artsalva-applications-logs"
+    },
+    {
+        "Type": "AWS::EC2::VPC",
+        "ID": "vpc-008d6391ceb9a5a47"
+    },
+    {
+        "Type": "AWS::EC2::VPCGatewayAttachment",
+        "ID": "IGW|vpc-008d6391ceb9a5a47"
+    }
+]
+\n----- EC2 INSTANCES -----
+[
+    [
+        {
+            "ID": "i-058d23e7972866eac",
+            "Type": "t2.micro",
+            "State": "running",
+            "PrivateIP": "10.0.0.251",
+            "PublicIP": "3.92.73.4"
+        }
+    ],
+    [
+        {
+            "ID": "i-0f0e02b01672464a7",
+            "Type": "t2.micro",
+            "State": "running",
+            "PrivateIP": "10.0.0.33",
+            "PublicIP": "50.16.96.152"
+        }
+    ],
+    [
+        {
+            "ID": "i-04baeb6dda53bfad0",
+            "Type": "t2.micro",
+            "State": "running",
+            "PrivateIP": "10.0.1.19",
+            "PublicIP": null
+        }
+    ]
+]
+\n----- SECURITY GROUPS -----
+[
+    {
+        "GroupId": "sg-053c955d8f2931a54",
+        "GroupName": "devops-assignment-NATSecurityGroup-8KhgbKkuuFbe",
+        "InboundRules": [
+            {
+                "IpProtocol": "-1",
+                "IpRanges": [
+                    {
+                        "CidrIp": "10.0.1.0/24"
+                    }
+                ],
+                "Ipv6Ranges": [],
+                "PrefixListIds": [],
+                "UserIdGroupPairs": []
+            }
+        ],
+        "OutboundRules": [
+            {
+                "IpProtocol": "-1",
+                "IpRanges": [
+                    {
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "Ipv6Ranges": [],
+                "PrefixListIds": [],
+                "UserIdGroupPairs": []
+            }
+        ]
+    },
+    {
+        "GroupId": "sg-0b7a7f310f8548437",
+        "GroupName": "devops-assignment-AppSecurityGroup-k5YFOjDSdPIg",
+        "InboundRules": [
+            {
+                "FromPort": 22,
+                "IpProtocol": "tcp",
+                "IpRanges": [],
+                "Ipv6Ranges": [],
+                "PrefixListIds": [],
+                "ToPort": 22,
+                "UserIdGroupPairs": [
+                    {
+                        "GroupId": "sg-0c2d00a29707faa4d",
+                        "UserId": "240528862565"
+                    }
+                ]
+            }
+        ],
+        "OutboundRules": [
+            {
+                "IpProtocol": "-1",
+                "IpRanges": [
+                    {
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "Ipv6Ranges": [],
+                "PrefixListIds": [],
+                "UserIdGroupPairs": []
+            }
+        ]
+    },
+    {
+        "GroupId": "sg-0c2d00a29707faa4d",
+        "GroupName": "devops-assignment-BastionSecurityGroup-1goe2leLlQ23",
+        "InboundRules": [
+            {
+                "FromPort": 22,
+                "IpProtocol": "tcp",
+                "IpRanges": [
+                    {
+                        "CidrIp": "112.210.244.249/32"
+                    }
+                ],
+                "Ipv6Ranges": [],
+                "PrefixListIds": [],
+                "ToPort": 22,
+                "UserIdGroupPairs": []
+            }
+        ],
+        "OutboundRules": [
+            {
+                "IpProtocol": "-1",
+                "IpRanges": [
+                    {
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "Ipv6Ranges": [],
+                "PrefixListIds": [],
+                "UserIdGroupPairs": []
+            }
+        ]
+    }
+]
+\n----- S3 BUCKET -----
+[
+    {
+        "Name": "artsalva-applications-logs",
+        "Created": "2025-07-18T10:53:39+00:00"
+    }
+]
+{
+    "Status": "Enabled"
+}
+\n----- SSH VALIDATION -----
+Bastion Public IP: 50.16.96.152
+Private EC2 IP: 10.0.1.19
+Testing Bastion SSH...
+ip-10-0-0-33.ec2.internal
+Testing Private EC2 SSH via Bastion...
+ip-10-0-1-19.ec2.internal
+\n----- DOCKER VALIDATION -----
+CONTAINER ID   IMAGE              COMMAND                  CREATED       STATUS          PORTS                               NAMES
+cdd5d90d3e72   nginxdemos/hello   "/docker-entrypoint.…"   2 hours ago   Up 51 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp   frosty_hodgkin
+<title>Hello World</title>
