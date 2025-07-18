@@ -5,7 +5,7 @@
   },
   {
     "ParameterKey": "LocalIP",
-    "ParameterValue": "112.210.244.249/32"
+    "ParameterValue": "X.X.X.X/32"
   },
   {
     "ParameterKey": "BucketName",
